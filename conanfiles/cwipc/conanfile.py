@@ -1,6 +1,6 @@
 from conan import ConanFile
 from conan.errors import ConanInvalidConfiguration
-from conan.tools.cmake import CMake, CMakeToolchain, cmake_layout
+from conan.tools.cmake import CMake, CMakeToolchain, cmake_layout, CMakeDeps
 from conan.tools.env import VirtualBuildEnv
 from conan.tools.files import copy, get, replace_in_file, rm, rmdir
 from conan.tools.microsoft import is_msvc, is_msvc_static_runtime
@@ -19,7 +19,7 @@ class CWIPCConan(ConanFile):
     version = "7.4.3"
 
     def layout(self):
-        cmake_layout(self, src_folder="src")
+        cmake_layout(self)
 
     def requirements(self):
         self.requires("libjpeg-turbo/2.1.5")
@@ -33,6 +33,9 @@ class CWIPCConan(ConanFile):
         )
 
     def generate(self):
+        deps = CMakeDeps()
+        deps.generate()
+
         tc = CMakeToolchain(self)
         tc.generate()
 
