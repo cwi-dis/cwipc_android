@@ -20,7 +20,7 @@ class CWIPCConan(ConanFile):
 
     def requirements(self):
         self.requires("libjpeg-turbo/2.1.5")
-        self.requires("pcl/1.13.0")
+        self.requires("pcl/1.13.0@pcl-android/stable")
 
     def source(self):
         git = Git(self)
@@ -38,13 +38,17 @@ class CWIPCConan(ConanFile):
 
     def build(self):
         cmake = CMake(self)
-        cmake.configure()
+        cmake.configure({
+            "CWIPC_VERSION": self.version
+        })
+
         cmake.build()
 
     def package(self):
         copy(self, "LICENSE.md", src=self.source_folder, dst=os.path.join(self.package_folder, "licenses"))
         cmake = CMake(self)
         cmake.install()
+
         # remove unneeded directories
         rmdir(self, os.path.join(self.package_folder, "share"))
         rmdir(self, os.path.join(self.package_folder, "lib", "pkgconfig"))
