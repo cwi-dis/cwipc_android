@@ -1,0 +1,49 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cc77692..07a2cca 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -8,23 +8,5 @@ include(GNUInstallDirs)
+ 
+ 
+ find_package(PCL 1.10 COMPONENTS common io octree filters features)
+-find_package(glfw3 3.2 QUIET)
+-if(NOT glfw3_FOUND)
+-	message(STATUS "glfw3: Use from third-party/glfw")
+-	add_subdirectory("third-party/glfw")
+-	include_directories("third-party/glfw/include")
+-endif()
+-find_package(OpenGL REQUIRED)
+ 
+ add_subdirectory("src")
+-add_subdirectory("apps/cwipc_ply2dump")
+-add_subdirectory("apps/cwipc_ply2dump_c")
+-add_subdirectory("apps/cwipc_pcl2dump")
+-add_subdirectory("apps/cwipc_dump2ply")
+-add_subdirectory("apps/cwipc_generate")
+-add_subdirectory("apps/cwipc_viewsynthetic")
+-add_subdirectory("apps/cwipc_tilefilter")
+-add_subdirectory("apps/cwipc_downsample")
+-add_subdirectory("apps/cwipc_remove_outliers")
+-add_subdirectory("python")
+-add_subdirectory("tests")
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index ee3fcdd..2df28ec 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ cmake_minimum_required(VERSION 3.16.0)
+ 
+-add_library(cwipc_util SHARED cwipc_util.cpp cwipc_synthetic.cpp cwipc_filters.cpp cwipc_window.cpp window_util.cpp cwipc_certh.cpp cwipc_proxy.cpp )
++add_library(cwipc_util SHARED cwipc_util.cpp cwipc_synthetic.cpp cwipc_filters.cpp cwipc_certh.cpp cwipc_proxy.cpp )
+ 
+ target_sources(cwipc_util
+ 	PRIVATE
+@@ -30,7 +30,6 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+ 	)
+ endif()
+ target_link_libraries(cwipc_util PUBLIC ${PCL_LIBRARIES})
+-target_link_libraries(cwipc_util PRIVATE glfw OpenGL::GL OpenGL::GLU)
+ 
+ if(WIN32)
+ 	target_link_libraries(cwipc_util PRIVATE wsock32 ws2_32)
+
