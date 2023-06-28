@@ -29,6 +29,9 @@ class CWIPCConan(ConanFile):
             f"v{self.version}"
         )
 
+        git.run("submodule update --init cwipc_codec")
+        git.run("submodule update --init cwipc_util")
+
     def generate(self):
         deps = CMakeDeps(self)
         deps.generate()
