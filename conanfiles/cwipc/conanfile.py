@@ -1,6 +1,6 @@
 from conan import ConanFile
 from conan.tools.cmake import CMake, CMakeToolchain, cmake_layout, CMakeDeps
-from conan.tools.files import copy, rmdir
+from conan.tools.files import copy, rmdir, chdir, apply_conandata_patches, export_conandata_patches
 from conan.tools.scm import Git
 import os
 
@@ -31,6 +31,11 @@ class CWIPCConan(ConanFile):
 
         git.run("submodule update --init cwipc_codec")
         git.run("submodule update --init cwipc_util")
+
+        apply_conandata_patches(self)
+
+    def export_sources(self):
+        export_conandata_patches(self)
 
     def generate(self):
         deps = CMakeDeps(self)
