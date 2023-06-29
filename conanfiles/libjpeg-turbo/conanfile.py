@@ -155,10 +155,10 @@ class LibjpegTurboConan(ConanFile):
         cmake_target_suffix = "-static" if not self.options.shared else ""
         lib_suffix = "-static" if is_msvc(self) and not self.options.shared else ""
 
-        self.cpp_info.components["jpeg"].set_property("cmake_module_target_name", "JPEG::JPEG")
-        self.cpp_info.components["jpeg"].set_property("cmake_target_name", f"libjpeg-turbo::jpeg{cmake_target_suffix}")
-        self.cpp_info.components["jpeg"].set_property("pkg_config_name", "libjpeg")
-        self.cpp_info.components["jpeg"].libs = [f"jpeg{lib_suffix}"]
+        self.cpp_info.components["jpeg"].set_property("cmake_target_name", "libjpeg-turbo::jpeg")
+        self.cpp_info.components["jpeg"].names["cmake_find_package"] = "jpeg"
+        self.cpp_info.components["jpeg"].names["cmake_find_package_multi"] = "jpeg"
+        self.cpp_info.components["jpeg"].names["pkg_config"] = "libjpeg"
 
         if self.options.get_safe("turbojpeg"):
             self.cpp_info.components["turbojpeg"].set_property("cmake_target_name", f"libjpeg-turbo::turbojpeg{cmake_target_suffix}")
