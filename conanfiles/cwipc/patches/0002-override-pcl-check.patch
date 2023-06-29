@@ -1,0 +1,16 @@
+diff --git a/cloud_codec_v2/CMakeLists.txt b/cloud_codec_v2/CMakeLists.txt
+index e410659..09c1562 100644
+--- a/cloud_codec_v2/CMakeLists.txt
++++ b/cloud_codec_v2/CMakeLists.txt
+@@ -39,10 +39,7 @@ cmake_minimum_required(VERSION 3.16.0)
+ set(SUBSYS_NAME cloud_codec_v2)
+ set(SUBSYS_DESC "Extensions for Point Cloud Compression for JPEG I/O")
+ 
+-
+-if(EXISTS "${PCL_ROOT}/include/pcl-${PCL_VERSION_MAJOR}.${PCL_VERSION_MINOR}/pcl/io/impl/entropy_range_coder.hpp")
+-    set(PCL_INSTALLED ON CACHE INTERNAL "PCL Installed" FORCE)
+-endif()
++set(PCL_INSTALLED ON CACHE INTERNAL "PCL Installed" FORCE)
+ 
+ set(${PROJECT_NAME}_INCLUDE_DIRS
+   ${CMAKE_CURRENT_SOURCE_DIR}/include

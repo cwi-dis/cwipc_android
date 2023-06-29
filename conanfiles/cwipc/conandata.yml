@@ -1,3 +1,9 @@
 patches:
-- patch_file: "patches/0001-no-apps-no-window.patch"
-  base_path: "cwipc_util"
+  - patch_file: "patches/0001-no-apps-no-window.patch"
+    base_path: "cwipc_util"
+  - patch_file: "patches/0004-add-ipproto-definition.patch"
+    base_path: "cwipc_util"
+  - patch_file: "patches/0002-override-pcl-check.patch"
+    base_path: "cwipc_codec"
+  - patch_file: "patches/0003-codec-no-apps.patch"
+    base_path: "cwipc_codec"

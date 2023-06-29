@@ -1,0 +1,13 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index ee3fcdd..206be81 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,6 +1,7 @@
+ cmake_minimum_required(VERSION 3.16.0)
+ 
+ add_library(cwipc_util SHARED cwipc_util.cpp cwipc_synthetic.cpp cwipc_filters.cpp cwipc_certh.cpp cwipc_proxy.cpp )
++add_compile_definitions(IPPROTO_TCP=6)
+ 
+ target_sources(cwipc_util
+ 	PRIVATE
+
