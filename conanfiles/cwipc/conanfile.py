@@ -50,7 +50,8 @@ class CWIPCConan(ConanFile):
     def build(self):
         cmake = CMake(self)
         cmake.configure({
-            "CWIPC_VERSION": self.version
+            "CWIPC_VERSION": self.version,
+            "ANDROID": "1"
         })
 
         cmake.build()
