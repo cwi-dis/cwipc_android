@@ -20,6 +20,9 @@ class CWIPCConan(ConanFile):
 
     def requirements(self):
         self.requires("libjpeg-turbo/2.1.5")
+        self.requires("eigen/3.3.7")
+        self.requires("flann/1.9.2@pcl-android/stable")
+        self.requires("boost/1.82.0@pcl-android/stable")
         self.requires("pcl/1.13.0@pcl-android/stable")
 
     def source(self):
