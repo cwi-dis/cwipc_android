@@ -1,8 +1,8 @@
 diff --git a/cloud_codec_v2/CMakeLists.txt b/cloud_codec_v2/CMakeLists.txt
-index e410659..09c1562 100644
+index e410659..84000e0 100644
 --- a/cloud_codec_v2/CMakeLists.txt
 +++ b/cloud_codec_v2/CMakeLists.txt
-@@ -39,10 +39,7 @@ cmake_minimum_required(VERSION 3.16.0)
+@@ -39,10 +39,8 @@ cmake_minimum_required(VERSION 3.16.0)
  set(SUBSYS_NAME cloud_codec_v2)
  set(SUBSYS_DESC "Extensions for Point Cloud Compression for JPEG I/O")
  
@@ -11,6 +11,15 @@ index e410659..09c1562 100644
 -    set(PCL_INSTALLED ON CACHE INTERNAL "PCL Installed" FORCE)
 -endif()
 +set(PCL_INSTALLED ON CACHE INTERNAL "PCL Installed" FORCE)
++add_compile_definitions(ANDROID)
  
  set(${PROJECT_NAME}_INCLUDE_DIRS
    ${CMAKE_CURRENT_SOURCE_DIR}/include
+@@ -82,6 +80,7 @@ include_directories(${${PROJECT_NAME}_INCLUDE_DIRS})
+ add_library(${LIB_NAME} STATIC ${srcs} ${incs} ${impl_incs})
+ set_property(TARGET ${LIB_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
+ target_link_libraries(${LIB_NAME} ${${PROJECT_NAME}_LIBRARIES})
++target_link_libraries(${LIB_NAME} ${JPEG_LIBRARIES})
+ 
+ set(${PROJECT_NAME}_LIBRARY_DIRS
+   ${CMAKE_CURRENT_BINARY_DIR}

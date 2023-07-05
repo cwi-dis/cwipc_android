@@ -38,11 +38,13 @@ index ee3fcdd..2df28ec 100644
  
  target_sources(cwipc_util
  	PRIVATE
-@@ -30,7 +30,6 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+@@ -30,7 +30,8 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
  	)
  endif()
  target_link_libraries(cwipc_util PUBLIC ${PCL_LIBRARIES})
 -target_link_libraries(cwipc_util PRIVATE glfw OpenGL::GL OpenGL::GLU)
++message("BOOST_LIBRARIES: ${BOOST_LIBRARIES}")
++target_link_libraries(cwipc_util PRIVATE ${BOOST_LIBRARIES})
  
  if(WIN32)
  	target_link_libraries(cwipc_util PRIVATE wsock32 ws2_32)
