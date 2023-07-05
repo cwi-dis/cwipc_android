@@ -1,6 +1,6 @@
 from conan import ConanFile
 from conan.tools.cmake import CMake, CMakeToolchain, cmake_layout, CMakeDeps
-from conan.tools.files import copy, rmdir, chdir, apply_conandata_patches, export_conandata_patches
+from conan.tools.files import copy, rmdir, apply_conandata_patches, export_conandata_patches
 from conan.tools.scm import Git
 import os
 
@@ -48,10 +48,18 @@ class CWIPCConan(ConanFile):
         tc.generate()
 
     def build(self):
+        boost_libdir = self.dependencies["boost"].cpp_info.libdirs[0]
+        boost_libraries = list([f.path for f in os.scandir(boost_libdir)])
+
+        jpeg_libdir = self.dependencies["libjpeg-turbo"].cpp_info.libdirs[0]
+        jpeg_libraries = list([f.path for f in os.scandir(jpeg_libdir)])
+
         cmake = CMake(self)
         cmake.configure({
             "CWIPC_VERSION": self.version,
-            "ANDROID": "1"
+            "ANDROID": "1",
+            "BOOST_LIBRARIES": ";".join(boost_libraries),
+            "JPEG_LIBRARIES": ";".join(jpeg_libraries)
         })
 
         cmake.build()
