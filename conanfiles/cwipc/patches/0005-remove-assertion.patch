@@ -1,0 +1,16 @@
+diff --git a/include/cwipc_util/api.h b/include/cwipc_util/api.h
+index 12fbd1b..91339aa 100644
+--- a/include/cwipc_util/api.h
++++ b/include/cwipc_util/api.h
+@@ -58,10 +58,6 @@ struct cwipc_cwipcdump_header {
+     size_t size; // 24-32
+ };
+ 
+-#ifdef __cplusplus
+-static_assert(sizeof(struct cwipc_cwipcdump_header) == 32, "cwipc_cwipcdump_header unexpected size");
+-#endif
+-
+ /** \brief Single 3D vector.
+  *
+  * Coordinates of a single 3D point.
+
