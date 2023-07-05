@@ -2,15 +2,13 @@ diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
 index ee3fcdd..43c7b30 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -1,6 +1,11 @@
+@@ -1,6 +1,9 @@
  cmake_minimum_required(VERSION 3.16.0)
 
  add_library(cwipc_util SHARED cwipc_util.cpp cwipc_synthetic.cpp cwipc_filters.cpp cwipc_certh.cpp cwipc_proxy.cpp )
 +add_compile_definitions(IPPROTO_TCP=6)
 +
 +set(Boost_LIBRARY_DIRS /Users/tom/.conan2/p/b/boost26fc82d5b75a9/p/lib)
-+message("Boost_LIBRARY_DIRS: ${Boost_LIBRARY_DIRS}")
-+message("Boost_INCLUDE_DIRS: ${Boost_INCLUDE_DIRS}")
 
  target_sources(cwipc_util
  	PRIVATE
