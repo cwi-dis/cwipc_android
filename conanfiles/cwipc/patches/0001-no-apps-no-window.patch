@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index cc77692..07a2cca 100644
+index cc77692..4e864af 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -8,23 +8,5 @@ include(GNUInstallDirs)
+@@ -8,23 +8,6 @@ include(GNUInstallDirs)
  
  
  find_package(PCL 1.10 COMPONENTS common io octree filters features)
@@ -22,12 +22,12 @@ index cc77692..07a2cca 100644
 -add_subdirectory("apps/cwipc_generate")
 -add_subdirectory("apps/cwipc_viewsynthetic")
 -add_subdirectory("apps/cwipc_tilefilter")
--add_subdirectory("apps/cwipc_downsample")
+ add_subdirectory("apps/cwipc_downsample")
 -add_subdirectory("apps/cwipc_remove_outliers")
 -add_subdirectory("python")
 -add_subdirectory("tests")
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index ee3fcdd..2df28ec 100644
+index ee3fcdd..67adc40 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -1,6 +1,6 @@
@@ -47,4 +47,3 @@ index ee3fcdd..2df28ec 100644
  
  if(WIN32)
  	target_link_libraries(cwipc_util PRIVATE wsock32 ws2_32)
-
