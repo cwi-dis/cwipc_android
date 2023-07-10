@@ -1,15 +1,14 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 68f3dd6..785619d 100644
+index 68f3dd6..529fdc2 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -89,9 +89,3 @@ set(${PROJECT_NAME}_DEFINITIONS
+@@ -89,9 +89,5 @@ set(${PROJECT_NAME}_DEFINITIONS
  add_definitions( ${${PROJECT_NAME}_DEFINITIONS})
  add_subdirectory("cloud_codec_v2")
  add_subdirectory("src")
 -add_subdirectory("apps/evaluate_compression")
--add_subdirectory("apps/cwipc_encode")
--add_subdirectory("apps/cwipc_decode")
+ add_subdirectory("apps/cwipc_encode")
+ add_subdirectory("apps/cwipc_decode")
 -add_subdirectory("apps/cwipc_enc_perftest")
 -add_subdirectory("python")
 -add_subdirectory("tests")
-
