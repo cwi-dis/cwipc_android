@@ -21,3 +21,7 @@ script, passing in the desired target architecture (i.e. `armv7`, `armv8`,
 Building for `armv8` should cover most devices nowadays. A smaller number of
 legacy devices require `armv7` builds. The `x86` architectures are only
 required for emulator support.
+
+Upon successful completion, you will find the resulting artifacts in a folder
+named `dist/[ARCH]` in your current working directory, where `ARCH` is the name
+of the target architecture that you passed to `build_cwipc_android.sh`.
